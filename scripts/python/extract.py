@@ -25,7 +25,11 @@ def get_data():
     url = f'https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=EUR&to_symbol=USD&outputsize=full&apikey={api_key}'
     r = requests.get(url)
     data = r.json()
-    return data
+    if "Information" in data and "API rate limit" in data["Information"]:
+        print("Daily API calls limit exceeded")
+        exit(0)
+    else:
+        return data
 
 def create_dataframe(data, timeframe):
     open = []
@@ -55,12 +59,3 @@ def create_dataframe(data, timeframe):
     )
 
     return market_data_df
-
-timeframe = generate_dataframe()
-data = get_data()
-dataframe = create_dataframe(data, timeframe)
-
-'''
-TODO:
-Wrzucanie danych do bazy
-'''

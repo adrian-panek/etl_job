@@ -8,6 +8,7 @@ import pandas as pd
 print("Creating the dataframe")
 timeframe = generate_dataframe()
 data = get_data()
+print(f"data: {data}")
 dataframe = create_dataframe(data, timeframe)
 print("Dataframe created")
 
