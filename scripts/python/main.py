@@ -1,6 +1,6 @@
-from scripts.python.extract import *
-from scripts.python.load import *
-from scripts.python.validation import check_if_data_is_valid
+from extract import *
+from load import *
+from validation import check_if_data_is_valid
 
 import numpy as np
 import pandas as pd
@@ -8,7 +8,6 @@ import pandas as pd
 print("Creating the dataframe")
 timeframe = generate_dataframe()
 data = get_data()
-print(f"data: {data}")
 dataframe = create_dataframe(data, timeframe)
 print("Dataframe created")
 

@@ -11,4 +11,4 @@ def connect_to_db():
     return engine
 
 def insert_data(dataframe, engine):
-    dataframe.to_sql(name="market_data", con=engine, if_exists="append")
+    dataframe.to_sql(name="market_data", con=engine, if_exists="append", index=False)
