@@ -13,5 +13,6 @@ jobs:
       - name: Run job
         run: |
           export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} && \
+          export DB_PASS=${{ secrets.POSTGRES_PASSWORD }} && \
           export API_KEY=${{ secrets.API_KEY }} && \
           docker compose up
