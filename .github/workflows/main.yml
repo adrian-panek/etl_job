@@ -1,0 +1,15 @@
+name: ETL job
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Checks out your repository
+        
+      - name: Run job
+        run: |
+          ${{ secrets.POSTGRES_PASSWORD }} ${{ secrets.API_KEY }} docker compose up
