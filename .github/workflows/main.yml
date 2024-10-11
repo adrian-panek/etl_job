@@ -12,4 +12,6 @@ jobs:
         
       - name: Run job
         run: |
-          ${{ secrets.POSTGRES_PASSWORD }} ${{ secrets.API_KEY }} docker compose up
+          export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} && \
+          export API_KEY=${{ secrets.API_KEY }} && \
+          docker compose up
