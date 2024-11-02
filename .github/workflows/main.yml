@@ -2,13 +2,14 @@ name: ETL job
 on:
   push:
     branches: ["master"]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: self-hosted
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Checks out your repository
+        uses: actions/checkout@v3
         
       - name: Run job
         run: |
