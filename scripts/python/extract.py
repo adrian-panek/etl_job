@@ -9,16 +9,13 @@ logging.basicConfig(format='[%(levelname)s]: %(message)s', level=logging.DEBUG)
 api_key = os.environ['API_KEY']
 
 def generate_dataframe():
-
     end_date = datetime.date.today()
-    start_date = end_date - datetime.timedelta(days=3)
-
+    start_date = end_date - datetime.timedelta(days=5)
     timeframe = []
-
     while start_date <= end_date:
-        timeframe.append(start_date.isoformat())
+        if start_date.weekday() not in (4,5):
+            timeframe.append(start_date.isoformat())
         start_date += datetime.timedelta(days=1)
-
     return timeframe
 
 def get_data():
@@ -59,3 +56,7 @@ def create_dataframe(data, timeframe):
     )
 
     return market_data_df
+
+dataframe = generate_dataframe()
+data = get_data()
+create_dataframe(data, dataframe)
